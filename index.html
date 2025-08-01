@@ -3,61 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eye Toy Calibration</title>
+    <title>Eye Toy - Body Tracking</title>
     <link rel="stylesheet" href="styles.css">
+    <script type="importmap">
+        {
+          "imports": {
+            "@mediapipe/pose": "https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.5.1675469404/pose.js",
+            "@mediapipe/drawing_utils": "https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.3.1675469404/drawing_utils.js",
+            "@mediapipe/camera_utils": "https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3.1675469404/camera_utils.js"
+          }
+        }
+    </script>
 </head>
 <body>
     <div class="app-container">
         <!-- Webcam Video -->
         <video id="webcam" autoplay muted playsinline></video>
-        
-        <!-- Calibration Overlay -->
-        <div class="calibration-overlay">
-            <div class="header">
-                <h1 class="title">EYE TOY</h1>
-                <p class="subtitle">Motion Gaming System</p>
-            </div>
-            
-            <div class="calibration-content">
-                <div class="status-panel">
-                    <h2 id="status-title">Camera Calibration</h2>
-                    <p id="status-message">Position yourself in the center of the frame</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progress-fill"></div>
-                    </div>
-                </div>
-                
-                <div class="body-outline">
-                    <div class="silhouette">
-                        <div class="head"></div>
-                        <div class="torso"></div>
-                        <div class="arms">
-                            <div class="arm left"></div>
-                            <div class="arm right"></div>
-                        </div>
-                        <div class="legs">
-                            <div class="leg left"></div>
-                            <div class="leg right"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="instructions">
-                    <p>Stand in the outlined area and move around to calibrate</p>
-                    <div class="controls">
-                        <button id="start-btn" class="primary-btn">Start Calibration</button>
-                        <button id="continue-btn" class="secondary-btn" style="display: none;">Continue</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="corner-frames">
-                <div class="frame top-left"></div>
-                <div class="frame top-right"></div>
-                <div class="frame bottom-left"></div>
-                <div class="frame bottom-right"></div>
-            </div>
-        </div>
+        <!-- Canvas for Pose Overlay -->
+        <canvas id="pose-canvas"></canvas>
         
         <!-- Permission Prompt -->
         <div class="permission-prompt" id="permission-prompt">
@@ -69,8 +32,7 @@
         </div>
     </div>
     
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
-
