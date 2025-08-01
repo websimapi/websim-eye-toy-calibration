@@ -10,7 +10,7 @@ class BodyTracker {
         this.permissionPrompt = document.getElementById('permission-prompt');
         this.grantPermissionBtn = document.getElementById('grant-permission');
 
-        this.init();
+        this.start();
     }
 
     init() {
@@ -18,7 +18,9 @@ class BodyTracker {
     }
 
     start() {
-        this.permissionPrompt.style.display = 'none';
+        if (this.permissionPrompt.style.display !== 'none') {
+            this.permissionPrompt.style.display = 'none';
+        }
 
         const pose = new Pose({
             locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`
@@ -73,4 +75,3 @@ class BodyTracker {
 document.addEventListener('DOMContentLoaded', () => {
     new BodyTracker();
 });
-
